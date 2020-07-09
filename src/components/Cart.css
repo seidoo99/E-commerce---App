@@ -1,0 +1,31 @@
+#back {
+    color: white;
+    /* background-color: blanchedalmond; */
+    margin: 30px;
+}
+
+#header {
+    text-align: center;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.buttons {
+    display: inline-flex;
+    width: 250px;
+    margin: 0 auto;
+}
+/* #checkout{
+    background-color: rgb(111, 235, 111);
+}
+/* #remove{
+    background-color: rgb(162, 116, 116);
+} *
+/* #inc{
+    background-color:blue;
+}
+#dec{
+    background-color:bisque;
+} */
