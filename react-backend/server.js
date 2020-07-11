@@ -1,10 +1,14 @@
-import express from 'express';
-// import data from './data'
+const express = require('express')
+
+
+require('dotenv').config();
 const app = express();
+const port = process.env.PORT || 5000
+// app.get("/products" , (res, req)=> {
+//     res.send();
+// })
 
-app.get("api/products" , (res, req)=> {
-    res.send(data.products);
-})
+app.use(express.json());
 
 
-app.listen(5000, ()=> {console.log("server start at localhost")})
+app.listen(port, ()=> {console.log(`server start running on port:  ${port}`)})
