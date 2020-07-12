@@ -28,10 +28,10 @@ function App() {
     <div className="App">
     <Route path='/' exact component={Home}/>
     <Route path='/contact' exact component={Contact}/>
-    <Route path='/products' exact component={Products}/>
+    <Route path='/api/products' exact component={Products}/>
     <Route path='/cart' exact component={Cart}/>
     <Route path='/checkout' exact component={Checkout}/>
-    <Route path='/product/:id' exact component={ProductDetail}/>
+    <Route path='/products/:id' exact component={ProductDetail}/>
     </div>
     </Router>
   );
