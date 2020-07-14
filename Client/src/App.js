@@ -15,6 +15,8 @@ import {
 } from "react-router-dom";
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
+import Login from './components/Login'
+import Register from './components/Register'
 
 
 
@@ -32,6 +34,8 @@ function App() {
     <Route path='/cart' exact component={Cart}/>
     <Route path='/checkout' exact component={Checkout}/>
     <Route path='/product/:id' exact component={ProductDetail}/>
+    <Route path='/login' exact component={Login}/>
+    <Route path='/register' exact component={Register}/>
     </div>
     </Router>
   );

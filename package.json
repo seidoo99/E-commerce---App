@@ -4,7 +4,9 @@
     "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon --watch react-backend --exec babel-node react-backend/server.js"
+        "start": "nodemon --watch react-backend --exec babel-node react-backend/server.js",
+        "build": "rm -rf dist && babel react-backend -d dist",
+        "heroku-postbuild": "npm run build && cd Client && npm install && npm run build"
     },
     "repository": {
         "type": "git",
@@ -21,8 +23,12 @@
         "@babel/core": "^7.10.4",
         "@babel/node": "^7.10.4",
         "@babel/preset-env": "^7.10.4",
+        "@babel/register": "^7.10.4",
+        "bcrypt": "^5.0.0",
+        "cors": "^2.8.5",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.9.23",
         "nodemon": "^2.0.4"
     }

@@ -32,6 +32,8 @@ export class NavBar extends Component {
                 <FaShoppingCart id='carticon' color='rgb(225, 203, 78' size={37} />
                                 <i className="fas fa-shopping-cart"></i>
                             </Link>
+                            <Link to="/Login">Login
+                            </Link>
                             <span>
                             </span>
                         </nav>
