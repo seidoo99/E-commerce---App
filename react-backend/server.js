@@ -25,8 +25,9 @@ app.get("/api/products/:id", (req, res) => {
 })
 
 
+
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true});
+mongoose.connect('mongodb+srv://tlXx04pN5TdI:tlXx04pN5TdI@cluster0.ulvxj.mongodb.net/ecommerce?retryWrites=true&w=majority', {useNewUrlParser: true, useCreateIndex: true});
 const connection = mongoose.connection;
 connection.once('open', ()=> {
     console.log('mongodb connection established successfully');
