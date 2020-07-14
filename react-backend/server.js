@@ -1,14 +1,29 @@
-const express = require('express')
+//  const express = require('express')
+const express = require ("express");
+const productdata = require ('./productData')
 const mongoose = require('mongoose')
 
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000
-// app.get("/products" , (res, req)=> {
-//     res.send();
-// })
+
 
 app.use(express.json());
+app.get('/api/products', (req, res) => {
+    res.send(productdata.products);
+})
+
+app.get("/api/products/:id", (req, res) => {
+    const productId = req.params.id;
+    const product = productdata.products.find(p=>p.id === productId);
+    // if(product){
+    //     res.send(product)
+    // }
+    // res.status(404).send({message :'product not found'});
+    res.send(productdata.products.find(x=>x.id == productId ))
+
+})
+
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true});
