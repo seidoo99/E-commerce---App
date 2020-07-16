@@ -1,8 +1,7 @@
 const express = require("express");
 const mongoose = require('mongoose')
-const routes = require("./routes")
 
-require('dotenv').config();
+require('dotenv').config({ path: 'C:/Users/abdel/OneDrive/Desktop/E-commerce-App/.env' });
 const app = express();
 const port = process.env.PORT || 5000
 
@@ -45,7 +44,7 @@ app.get('/api/products', async (req, res) => {
 
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect('mongodb+srv://tlXx04pN5TdI:tlXx04pN5TdI@cluster0.ulvxj.mongodb.net/ecommerce?retryWrites=true&w=majority', {useNewUrlParser: true, useCreateIndex: true});
+mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true});
 const connection = mongoose.connection;
 connection.once('open', ()=> {
     console.log('mongodb connection established successfully');
