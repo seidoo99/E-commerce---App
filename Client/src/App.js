@@ -17,7 +17,7 @@ import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import Login from './components/Login'
 import Register from './components/Register'
-
+import Profile from './components/Profile'
 
 
 
@@ -36,6 +36,7 @@ function App() {
     <Route path='/product/:id' exact component={ProductDetail}/>
     <Route path='/login' exact component={Login}/>
     <Route path='/register' exact component={Register}/>
+    <Route path='/profile' exact component={Profile}/>
     </div>
     </Router>
   );

@@ -1,82 +1,63 @@
-import React, { Component } from 'react'
-import { login } from './userFunction'
-import {Link} from 'react-router-dom'
-class Login extends Component {
-  constructor() {
-    super()
-    this.state = {
-      email: '',
-      password: '',
-      errors: {}
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { signin } from '../actions/userActions';
+
+function Login(props) {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const userSignin = useSelector(state => state.userSignin);
+  const { loading, userInfo, error } = userSignin;
+  const dispatch = useDispatch();
+  const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
+  useEffect(() => {
+    if (userInfo) {
+      props.history.push(redirect);
     }
+    return () => {
+      //
+    };
+  }, [userInfo]);
 
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(signin(email, password));
+
   }
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
-  }
-  onSubmit(e) {
-    e.preventDefault()
-
-    const user = {
-      email: this.state.email,
-      password: this.state.password
-    }
-
-    login(user).then(res => {
-      if (res) {
-        this.props.history.push(`/`)
-      }
-    })
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 mt-5 mx-auto">
-            <form noValidate onSubmit={this.onSubmit}>
-              <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-              <div className="form-group">
-                <label htmlFor="email">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  placeholder="Enter email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  placeholder="Password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                />
-              </div>
-              <button
-                type="submit"
-                className="btn btn-lg btn-primary btn-block"
-              >
-                Sign in
-              </button>
-              <li>new to the site ?</li>
-              <li>
-              <Link to ="/register">Create new account</Link>
-              </li>
-            </form>
-          </div>
-        </div>
-      </div>
-    )
-  }
+  return <div className="form">
+    <form onSubmit={submitHandler} >
+      <ul className="form-container">
+        <li>
+          <h2>Sign-In</h2>
+        </li>
+        <li>
+          {loading && <div>Loading...</div>}
+          {error && <div>{error}</div>}
+        </li>
+        <li>
+          <label htmlFor="email">
+            Email
+          </label>
+          <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <button type="submit" className="button primary">Signin</button>
+        </li>
+        <li>
+          New to site?
+        </li>
+        <li>
+          <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your amazona account</Link>
+        </li>
+      </ul>
+    </form>
+  </div>
 }
-
-export default Login
+export default Login;

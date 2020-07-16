@@ -1,102 +1,77 @@
-import React, { Component } from 'react'
-import { register } from './userFunction'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { register } from '../actions/userActions';
 
-class Register extends Component {
-  constructor() {
-    super()
-    this.state = {
-      first_name: '',
-      last_name: '',
-      email: '',
-      password: '',
-      errors: {}
+function Register(props) {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [rePassword, setRePassword] = useState('');
+  const userRegister = useSelector(state => state.userRegister);
+  const { loading, userInfo, error } = userRegister;
+  const dispatch = useDispatch();
+
+  const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
+  useEffect(() => {
+    if (userInfo) {
+      props.history.push(redirect);
     }
+    return () => {
+      //
+    };
+  }, [userInfo]);
 
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(register(name, email, password));
   }
+  return <div className="form">
+    <form onSubmit={submitHandler} >
+      <ul className="form-container">
+        <li>
+          <h2>Create Account</h2>
+        </li>
+        <li>
+          {loading && <div>Loading...</div>}
+          {error && <div>{error}</div>}
+        </li>
+        <li>
+          <label htmlFor="name">
+            Name
+          </label>
+          <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <label htmlFor="email">
+            Email
+          </label>
+          <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <label htmlFor="rePassword">Re-Enter Password</label>
+          <input type="password" id="rePassword" name="rePassword" onChange={(e) => setRePassword(e.target.value)}>
+          </input>
+        </li>
+        <li>
+          <button type="submit" className="button primary">Register</button>
+        </li>
+        <li>
+          Already have an account?
+          <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="button secondary text-center" >Create your new account</Link>
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
-  }
-  onSubmit(e) {
-    e.preventDefault()
+        </li>
 
-    const newUser = {
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      email: this.state.email,
-      password: this.state.password
-    }
-
-    register(newUser).then(res => {
-      this.props.history.push(`/login`)
-    })
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 mt-5 mx-auto">
-            <form noValidate onSubmit={this.onSubmit}>
-              <h1 className="h3 mb-3 font-weight-normal">Register</h1>
-              <div className="form-group">
-                <label htmlFor="name">First name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="first_name"
-                  placeholder="Enter your first name"
-                  value={this.state.first_name}
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="name">Last name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="last_name"
-                  placeholder="Enter your lastname name"
-                  value={this.state.last_name}
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  placeholder="Enter email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  placeholder="Password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                />
-              </div>
-              <button
-                type="submit"
-                className="btn btn-lg btn-primary btn-block"
-              >
-                Register!
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    )
-  }
+      </ul>
+    </form>
+  </div>
 }
-
-export default Register
+export default Register;

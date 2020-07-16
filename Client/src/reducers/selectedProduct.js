@@ -1,6 +1,6 @@
 
 export default function (state = { cart: []}, action) {
-  console.log(action)
+  
   switch (action.type) {
 
     case "PRODUCT_SELECTED":
