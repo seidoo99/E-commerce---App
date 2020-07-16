@@ -1,5 +1,9 @@
 {
     "name": "e-comerce-app",
+<<<<<<< HEAD
+=======
+    "proxy": "http://localhost:5000",
+>>>>>>> 07a2919b05367d492c2192e0d5fc1d425fb592bc
     "version": "0.1.0",
     "private": true,
     "dependencies": {
