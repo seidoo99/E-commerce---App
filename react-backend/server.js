@@ -1,5 +1,4 @@
 const express = require("express");
-// const productdata = require ('./productData')
 const mongoose = require('mongoose')
 const routes = require("./routes")
 
@@ -10,34 +9,27 @@ const port = process.env.PORT || 5000
 
 
 const Schema = new mongoose.Schema({
-    title: String,
-    content: String
+    picture: String,
+    brand: String,
+    type: String,
+    price: Number,
+    qut: Number,
+    description: String,
+    count: Number
     },
     {
-        collection: 'posts'
+        collection: 'products'
     });
   
-  const Post = mongoose.model('Post', Schema);
+  const Products = mongoose.model('Products', Schema);
 
 app.use(express.json());
 
-app.get('/posts', async (req, res) => {
-      const posts = await Post.find();
-  res.send(posts)
+app.get('/api/products', async (req, res) => {
+      const productData = await Products.find();
+  res.send(productData)
 });
   
-app.post("/posts", async (req, res) => {
-    const post = new Post({
-      title: req.body.title,
-      content: req.body.content
-    })
-    await post.save()
-    res.send(post)
-  })
-  
-// app.get('/api/products', (req, res) => {
-//     res.send(productdata.products);
-// })
 
 // app.get("/api/products/:id", (req, res) => {
 //     const productId = req.params.id;
