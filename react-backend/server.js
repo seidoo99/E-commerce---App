@@ -6,7 +6,6 @@ const config = require( './config');
 const app = express()
 const port = process.env.PORT || 5000
 
-
 app.use(express.json());
 app.use(cors())
 // const uri = process.env.ATLAS_URI;
@@ -20,6 +19,6 @@ mongoose.connect(mongodbUrl, {useNewUrlParser: true, useUnifiedTopology: true, u
 // })
 
 var Users = require('./routes/users')
-app.use('/', Users)
+app.use('/api/user', Users)
 
 app.listen(config.port, ()=> {console.log(`server start running on port:  ${port}`)})

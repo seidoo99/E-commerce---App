@@ -54,7 +54,7 @@ function Login(props) {
           New to site?
         </li>
         <li>
-          <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your amazona account</Link>
+          <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create new account</Link>
         </li>
       </ul>
     </form>
