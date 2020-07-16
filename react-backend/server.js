@@ -6,7 +6,6 @@ const app = express();
 const port = process.env.PORT || 5000
 
 
-
 const Schema = new mongoose.Schema({
     picture: String,
     brand: String,
@@ -28,23 +27,18 @@ app.get('/api/products', async (req, res) => {
       const productData = await Products.find();
   res.send(productData)
 });
-  
 
-// app.get("/api/products/:id", (req, res) => {
-//     const productId = req.params.id;
-//     const product = productdata.products.find(p=>p.id === productId);
-//     // if(product){
-//     //     res.send(product)
-//     // }
-//     // res.status(404).send({message :'product not found'});
-//     res.send(productdata.products.find(x=>x.id == productId ))
 
-// })
+app.get("/api/products/:id", async (req, res) => {
+  const productData = await Products.find( { _id: '5f0e3c967f6b4d09c7e27555'} )
+  res.send(productData)
+
+})
 
 
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true});
+mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
 const connection = mongoose.connection;
 connection.once('open', ()=> {
     console.log('mongodb connection established successfully');
