@@ -11,11 +11,11 @@ function selectedProductReducer(state = { products: [] }, action) {
       return { loading: false, error: action.payload };
     
     
-      case "PRODUCT_SELECTED":
-      return {
-        ...state,
-        cart: [...state.cart, action.payload]
-      }
+      // case "PRODUCT_SELECTED":
+      // return {
+      //   ...state,
+      //   cart: [...state.cart, action.payload]
+      // }
 
     case "REMOVE_SELECTED":
       console.log(action)

@@ -45,16 +45,6 @@ useEffect(() => {
                                     <p className="card-text">{product.type}</p>
                                     <p className="card-text">${product.price}</p>
                                     </div>
-                                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={ () =>this.props.addToCart(product)}>Add To Cart
-                                    <FaCartPlus color='rgb(255, 215, 0' size={22} />
-</button>
-
-                                   {/* <Link to= {'/cart'} className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={ () =>this.props.addToCart(product)}>Add To Cart</Link> */}
-                                   <Link to= {'/checkout'}> <button className="btn btn-outline-success my-2 my-sm-0" type="submit" >Buy Now
-                                   {/* onClick ={this.buy} */}
-                                   <FaDollarSign color='green' size={22} />
-
-                                   </button></Link>
 
                                 </div>
                             </li>

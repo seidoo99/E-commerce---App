@@ -27,9 +27,9 @@ function App() {
     <Router >
     <div className="App">
     <Route path='/' exact component={Home}/>
-    <Route path='/contact' exact component={Contact}/>
+    {/* <Route path='/contact' exact component={Contact}/> */}
     <Route path='/api/products' exact component={Products}/>
-    <Route path='/cart' exact component={Cart}/>
+    <Route path='/cart/:id?' exact component={Cart}/>
     <Route path='/checkout' exact component={Checkout}/>
     <Route path='/products/:id' exact component={ProductDetail}/>
     </div>
