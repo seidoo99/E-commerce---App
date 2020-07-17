@@ -1,7 +1,9 @@
-const express = require("express");
-const mongoose = require('mongoose')
 
-require('dotenv').config({ path: 'C:/Users/abdel/OneDrive/Desktop/E-commerce-App/.env' });
+const express = require("express");
+const mongoose = require('mongoose');
+const userRoute = require( './routes/users');
+const bodyParser = require('body-parser');
+require('dotenv').config({ path: '/Users/seidzerihun/Desktop/E-Commerce-APP/.env' });
 const app = express();
 const port = process.env.PORT || 5000
 
@@ -22,22 +24,16 @@ const Schema = new mongoose.Schema({
   const Products = mongoose.model('Products', Schema);
 
 app.use(express.json());
-app.use(cors())
-// const uri = process.env.ATLAS_URI;
-const mongodbUrl = config.MONGODB_URL;
-mongoose.connect(mongodbUrl, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
-.then (()=> console.log('MongoDB connected ...'))
-.catch(err => console.log(err));
-// const connection = mongoose.connection;
-// connection.once('open', ()=> {
-//     console.log('mongodb connection established successfully');
-// })
 
 app.get('/api/products', async (req, res) => {
       const productData = await Products.find();
   res.send(productData)
 });
 
+app.use('/api/users', userRoute);
+// app.get('/ping', (req, res)=> {
+//   res.send('pong')
+// })
 
 app.get("/api/products/:id", async (req, res) => {
   const productData = await Products.find( { _id: '5f0e3c967f6b4d09c7e27555'} )
@@ -45,9 +41,7 @@ app.get("/api/products/:id", async (req, res) => {
 
 })
 
-
-
-const uri = process.env.ATLAS_URI;
+const uri = process.env.MONGODB_URL;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
 const connection = mongoose.connection;
 connection.once('open', ()=> {
@@ -55,4 +49,4 @@ connection.once('open', ()=> {
     
 })
 
-app.listen(config.port, ()=> {console.log(`server start running on port:  ${port}`)})
+app.listen(port, ()=> {console.log(`server start running on port:  ${port}`)})

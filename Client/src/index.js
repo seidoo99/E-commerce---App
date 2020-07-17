@@ -1,21 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import thunk from 'redux-thunk';
-import Cookie from 'js-cookie';
+// import thunk from 'redux-thunk';
+// import Cookie from 'js-cookie';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './store'
 
-import allReducers from './reducers'
-import { createStore,  applyMiddleware, compose } from 'redux';
+// import allReducers from './reducers'
+// import { createStore,  applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux'
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-  allReducers, 
-  composeEnhancer(applyMiddleware(thunk))
-);
+// const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const store = createStore(
+//   allReducers, 
+//   composeEnhancer(applyMiddleware(thunk))
+// );
 ReactDOM.render(
   <React.StrictMode>
   <Provider store= {store} >
