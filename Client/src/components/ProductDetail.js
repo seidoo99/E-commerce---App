@@ -17,7 +17,7 @@ import { FaStar, FaArrowAltCircleLeft, FaTrashAlt, FaArrowUp, FaChevronCircleLef
 function ProductDetail(props) {
     const productDetail = useSelector(state => state.productDetail)
     const { product, loading, error } = productDetail;
-    const [qut, setQty] = useState(1);
+    const [qty, setQty] = useState(1);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function ProductDetail(props) {
         }
     }, [])
     const addToCartHandler = () => {
-        props.history.push("/cart/" + props.match.params.id + "?qut=" + qut)
+        props.history.push("/cart/" + props.match.params.id + "?qty=" + qty)
     }
     return (
         loading ? <div className="loader"></div>
@@ -59,11 +59,11 @@ function ProductDetail(props) {
                </Link>
 
                <div>
-                  Qty: <select value={qut} onChange={(e) => { setQty(e.target.value) }}>
-                    {[...Array(product.countInStock).keys()].map(x =>
+                  {/* Qty: <select value={qty} onChange={(e) => { setQty(e.target.value) }}>
+                    {[...Array(product.qut).keys()].map(x =>
                       <option key={x + 1} value={x + 1}>{x + 1}</option>
                     )}
-                  </select>
+                  </select> */}
                 </div>
                    <button onClick={addToCartHandler} className="button primary" >Add to Cart</button>
                   
