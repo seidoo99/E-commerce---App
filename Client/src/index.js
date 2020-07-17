@@ -5,6 +5,7 @@ import Cookie from 'js-cookie';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import store from './store'
 
 import allReducers from './reducers'
 import { createStore,  applyMiddleware, compose } from 'redux';

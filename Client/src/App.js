@@ -20,10 +20,6 @@ import Register from './components/Register'
 import Profile from './components/Profile'
 
 
-
-
-
-
 function App() {
   return (
     <Router >

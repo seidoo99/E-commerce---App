@@ -20,7 +20,7 @@ export class NavBar extends Component {
                         <FaHome id='contacticon' color='rgb(225, 203, 78' size={37} />
                         </Link>
 
-                            <Link to='products'>Products
+                            <Link to='/api/products'>Products
                             <FaCogs id='contacticon' color='rgb(225, 203, 78' size={37} />
                             </Link>
                             

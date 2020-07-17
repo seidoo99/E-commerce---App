@@ -15,6 +15,8 @@ removeFromCart: selectedProductReducer,
 userSignin: userSigninReducer,
 userRegister: userRegisterReducer,
 userUpdate: userUpdateReducer,
+productDetail :productDetailReducer
+
 })
 
 export default allReducers;
