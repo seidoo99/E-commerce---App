@@ -37,11 +37,11 @@ useEffect(() => {
 
                     {
                         products.map(product =>
-                            <li key={product.id}>
+                            <li key={product._id}>
                                 <div className='card'>
-                                    <Link to= {`/products/${product.id}`}><img className="card-img-top" id='image' src={product.picture}/></Link>
+                                    <Link to= {`/products/${product._id}`}><img className="card-img-top" id='image' src={product.picture}/></Link>
                                     <div className='card-bod'>
-                                   <Link to={`/products/${product.id}`}><h5 className="card-title" >{product.brand} </h5> </Link> 
+                                   <Link to={`/products/${product._id}`}><h5 className="card-title" >{product.brand} </h5> </Link> 
                                     <p className="card-text">{product.type}</p>
                                     <p className="card-text">${product.price}</p>
                                     </div>

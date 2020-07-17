@@ -1,7 +1,8 @@
 const express = require("express");
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-require('dotenv').config({ path: 'C:/Users/abdel/OneDrive/Desktop/E-commerce-App/.env' });
+
+require('dotenv').config({ path: '/Users/yohannes/Desktop/DigitalCrafts/E-commerce-App/.env'});
 const app = express();
 const port = process.env.PORT || 5000
 
@@ -30,7 +31,7 @@ app.get('/api/products', async (req, res) => {
 
 
 app.get("/api/products/:id", async (req, res) => {
-  const productData = await Products.find( { _id: '5f0e3c967f6b4d09c7e27555'} )
+  const productData = await Products.findById(req.params.id);
   res.send(productData)
 
 })
