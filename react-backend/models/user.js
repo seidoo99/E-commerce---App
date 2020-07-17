@@ -7,7 +7,11 @@ const userSchema = new mongoose.Schema({
   },
   password: { type: String, required: true },
   isAdmin: { type: Boolean, required: true, default: false },
-});
+},
+{
+  collection:'users'
+}
+);
 
 const userModel = mongoose.model('users', userSchema);
 

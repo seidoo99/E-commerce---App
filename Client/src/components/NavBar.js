@@ -12,7 +12,7 @@ import Footer from './Footer';
 
 function NavBar () {
     const userSignin = useSelector(state=> state.userSignin);
-  const {userInfo} = userSignin
+    const {userInfo} = userSignin
         return (
             <Route>
                 <div>

@@ -72,7 +72,7 @@ function productDetailReducer (state = {product: {} }, action){
   
 }
 
-export default {selectedProductReducer, productDetailReducer};
+export {selectedProductReducer, productDetailReducer};
 
 
 // function increamentQuantity(cart, action){

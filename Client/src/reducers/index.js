@@ -1,8 +1,8 @@
 import Cookie from 'js-cookie'
 import {combineReducers} from 'redux'
-import productDetailReducer from './'
+// import productDetailReducer from './selectedProduct'
 import productReducer from './productData'
-import selectedProductReducer from './selectedProduct'
+import {selectedProductReducer, productDetailReducer} from './selectedProduct'
 import {
     userSigninReducer,
     userRegisterReducer,
@@ -18,7 +18,7 @@ removeFromCart: selectedProductReducer,
 userSignin: userSigninReducer,
 userRegister: userRegisterReducer,
 userUpdate: userUpdateReducer,
-// productDetail :productDetailReducer
+productDetail :productDetailReducer
 
 })
 
