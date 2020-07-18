@@ -30,6 +30,10 @@ function ProductDetail(props) {
     const addToCartHandler = () => {
         props.history.push("/cart/" + props.match.params.id + "?qty=" + qty)
     }
+
+    // const showMessage = ()=> {
+    //     alert('please sign in to')
+    // }
     return (
         loading ? <div className="loader"></div>
             :
@@ -69,7 +73,7 @@ function ProductDetail(props) {
                   {userInfo ? (
                     <button onClick={addToCartHandler} className="button primary" >Add to Cart</button>
                   ) : (
-                    ''
+                    <Link to="/signin">please sign in to continue</Link>
                   )}
                 </div>
                    

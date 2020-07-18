@@ -35,6 +35,7 @@ function App() {
     <Route path='/signin' exact component={Login}/>
     <Route path='/register' exact component={Register}/>
     <Route path='/profile' exact component={Profile}/>
+    
     </div>
     </Router>
   );

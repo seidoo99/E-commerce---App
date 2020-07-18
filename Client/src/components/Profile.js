@@ -14,7 +14,7 @@ function ProfileScreen(props) {
   const { userInfo } = userSignin;
   const handleLogout = () => {
     dispatch(logout());
-    props.history.push("/signin");
+    props.history.push("/");
   }
   const submitHandler = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ function ProfileScreen(props) {
   const userUpdate = useSelector(state => state.userUpdate);
   const { loading, success, error } = userUpdate;
 
-  const myOrderList = useSelector(state => state.myOrderList);
+  // const myOrderList = useSelector(state => state.myOrderList);
 //   const { loading: loadingOrders, orders, error: errorOrders } = myOrderList;
   useEffect(() => {
     if (userInfo) {

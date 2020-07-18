@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Home.css'
+// import { useSelector } from 'react-redux';
 import { useSelector } from 'react-redux';
 import {
     BrowserRouter as Router,
@@ -13,6 +14,7 @@ import Footer from './Footer';
 function NavBar () {
     const userSignin = useSelector(state=> state.userSignin);
     const {userInfo} = userSignin;
+    
         return (
             <Route>
                 <div>
@@ -38,6 +40,7 @@ function NavBar () {
                               ) : (
                                 <Link to="/signin">Sign In</Link>
                               )}
+                              
                             <span>
                             </span>
                         </nav>
