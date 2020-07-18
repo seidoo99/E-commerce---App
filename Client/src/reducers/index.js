@@ -6,7 +6,6 @@ import {selectedProductReducer, productDetailReducer} from './selectedProduct'
 import {cartReducer} from './cartReducer'
 
 
-const initialState = {userSignin : {userInfo}}
 const allReducers = combineReducers({
 products: productReducer,
 selectedProduct: selectedProductReducer,
