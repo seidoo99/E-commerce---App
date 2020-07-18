@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Home.css'
+// import { useSelector } from 'react-redux';
 import { useSelector } from 'react-redux';
 import {
     BrowserRouter as Router,
@@ -12,7 +13,8 @@ import Footer from './Footer';
 
 function NavBar () {
     const userSignin = useSelector(state=> state.userSignin);
-    const {userInfo} = userSignin
+    const {userInfo} = userSignin;
+    
         return (
             <Route>
                 <div>
@@ -25,16 +27,20 @@ function NavBar () {
                             <Link to='/api/products'>Products
                             <FaCogs id='contacticon' color='rgb(225, 203, 78' size={37} />
                             </Link>
-        
-                            <Link to="/cart/:id?">Cart
+                            {userInfo ? (
+                                <Link to="/cart/:id?">Cart
                 <FaShoppingCart id='carticon' color='rgb(225, 203, 78' size={37} />
                                 <i className="fas fa-shopping-cart"></i>
                             </Link>
+                              ) : (
+                                ''
+                              )}
                             {userInfo ? (
                                 <Link to="/profile">{userInfo.name}</Link>
                               ) : (
                                 <Link to="/signin">Sign In</Link>
                               )}
+                              
                             <span>
                             </span>
                         </nav>

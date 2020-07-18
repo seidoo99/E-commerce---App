@@ -31,10 +31,11 @@ function App() {
     <Route path='/api/products' exact component={Products}/>
     <Route path='/cart/:id?' exact component={Cart}/>
     <Route path='/checkout' exact component={Checkout}/>
-    <Route path='/product/:id' exact component={ProductDetail}/>
+    <Route path='/products/:id' exact component={ProductDetail}/>
     <Route path='/signin' exact component={Login}/>
     <Route path='/register' exact component={Register}/>
     <Route path='/profile' exact component={Profile}/>
+    
     </div>
     </Router>
   );
