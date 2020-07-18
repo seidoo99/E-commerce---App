@@ -25,12 +25,8 @@ function NavBar () {
                             <Link to='/api/products'>Products
                             <FaCogs id='contacticon' color='rgb(225, 203, 78' size={37} />
                             </Link>
-                            
-
-                            <Link to="contact">Contact
-                <FaEnvelope id='contacticon' color='rgb(225, 203, 78' size={34} />
-                            </Link>
-                            <Link to="cart">Cart
+        
+                            <Link to="/cart/:id?">Cart
                 <FaShoppingCart id='carticon' color='rgb(225, 203, 78' size={37} />
                                 <i className="fas fa-shopping-cart"></i>
                             </Link>

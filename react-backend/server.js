@@ -1,9 +1,8 @@
-
 const express = require("express");
 const mongoose = require('mongoose');
-const userRoute = require( './routes/users');
-const bodyParser = require('body-parser');
-require('dotenv').config({ path: '/Users/seidzerihun/Desktop/E-Commerce-APP/.env' });
+
+
+require('dotenv').config({ path: '/Users/yohannes/Desktop/DigitalCrafts/E-commerce-App/.env'});
 const app = express();
 const port = process.env.PORT || 5000
 
@@ -36,7 +35,7 @@ app.use('/api/users', userRoute);
 // })
 
 app.get("/api/products/:id", async (req, res) => {
-  const productData = await Products.find( { _id: '5f0e3c967f6b4d09c7e27555'} )
+  const productData = await Products.findById(req.params.id);
   res.send(productData)
 
 })
