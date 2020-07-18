@@ -12,13 +12,14 @@ import { FaStar, FaArrowAltCircleLeft, FaTrashAlt, FaArrowUp, FaChevronCircleLef
 
 
 
-
-
 function ProductDetail(props) {
     const productDetail = useSelector(state => state.productDetail)
     const { product, loading, error } = productDetail;
     const [qty, setQty] = useState(1);
     const dispatch = useDispatch();
+
+    const userSignin = useSelector(state=> state.userSignin);
+    const {userInfo} = userSignin;
 
     useEffect(() => {
         dispatch(productDetails(props.match.params.id))
@@ -64,8 +65,14 @@ function ProductDetail(props) {
                       <option key={x + 1} value={x + 1}>{x + 1}</option>
                     )}
                   </select> */}
+
+                  {userInfo ? (
+                    <button onClick={addToCartHandler} className="button primary" >Add to Cart</button>
+                  ) : (
+                    ''
+                  )}
                 </div>
-                   <button onClick={addToCartHandler} className="button primary" >Add to Cart</button>
+                   
                   
                             </div>
                         </div>
@@ -77,6 +84,8 @@ function ProductDetail(props) {
 
 
 export default ProductDetail
+
+
 
 
 

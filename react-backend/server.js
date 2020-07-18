@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require('mongoose');
+const userRoute = require('./routes/users');
 
-
-require('dotenv').config({ path: '/Users/yohannes/Desktop/DigitalCrafts/E-commerce-App/.env'});
+require('dotenv').config({ path: '/Users/seidzerihun/Desktop/E-Commerce-APP/.env'});
 const app = express();
 const port = process.env.PORT || 5000
 
@@ -29,6 +29,7 @@ app.get('/api/products', async (req, res) => {
   res.send(productData)
 });
 
+app.use('/api/users', userRoute);
 
 app.get("/api/products/:id", async (req, res) => {
   const productData = await Products.findById(req.params.id);
@@ -38,10 +39,11 @@ app.get("/api/products/:id", async (req, res) => {
 
 const uri = process.env.MONGODB_URL;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
+
 const connection = mongoose.connection;
 connection.once('open', ()=> {
     console.log('mongodb connection established successfully');
     
-})
+}).catch(error => {console.log(error)});
 
 app.listen(port, ()=> {console.log(`server start running on port:  ${port}`)})
