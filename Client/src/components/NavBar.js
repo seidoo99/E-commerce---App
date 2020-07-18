@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Home.css'
+import { useSelector } from 'react-redux';
 import {
     BrowserRouter as Router,
     Switch,
@@ -9,8 +10,9 @@ import {
 import { FaShoppingCart, FaEnvelope, FaCogs, FaHome } from 'react-icons/fa'
 import Footer from './Footer';
 
-export class NavBar extends Component {
-    render() {
+function NavBar () {
+    const userSignin = useSelector(state=> state.userSignin);
+    const {userInfo} = userSignin
         return (
             <Route>
                 <div>
@@ -28,6 +30,11 @@ export class NavBar extends Component {
                 <FaShoppingCart id='carticon' color='rgb(225, 203, 78' size={37} />
                                 <i className="fas fa-shopping-cart"></i>
                             </Link>
+                            {userInfo ? (
+                                <Link to="/profile">{userInfo.name}</Link>
+                              ) : (
+                                <Link to="/signin">Sign In</Link>
+                              )}
                             <span>
                             </span>
                         </nav>
@@ -37,6 +44,5 @@ export class NavBar extends Component {
             </Route>
         )
     }
-}
 
 export default NavBar
