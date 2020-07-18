@@ -1,8 +1,6 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const userRoute = require('./routes/users');
-
-require('dotenv').config({ path: '/Users/seidzerihun/Desktop/E-Commerce-APP/.env'});
 const app = express();
 const port = process.env.PORT || 5000
 
