@@ -5,7 +5,6 @@ import {selectedProductReducer, productDetailReducer} from './selectedProduct'
 import {cartReducer} from './cartReducer'
 
 
-
 const allReducers = combineReducers({
 products: productReducer,
 selectedProduct: selectedProductReducer,

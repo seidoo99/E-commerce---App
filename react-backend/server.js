@@ -29,6 +29,10 @@ app.get('/api/products', async (req, res) => {
   res.send(productData)
 });
 
+// app.use('/api/users', userRoute);
+// // app.get('/ping', (req, res)=> {
+// //   res.send('pong')
+// // })
 
 app.get("/api/products/:id", async (req, res) => {
   const productData = await Products.findById(req.params.id);
