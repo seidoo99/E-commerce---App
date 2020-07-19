@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 const userRoute = require('./routes/users');
 
-require('dotenv').config({ path: '/Users/seidzerihun/Desktop/E-Commerce-APP/.env'});
+require('dotenv').config({ path: '/Users/yohannes/Desktop/DigitalCrafts/E-commerce-App/.env'});
 const app = express();
 const port = process.env.PORT || 5000
 
@@ -36,6 +36,9 @@ app.get("/api/products/:id", async (req, res) => {
   res.send(productData)
 
 })
+
+
+
 
 const uri = process.env.MONGODB_URL;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
