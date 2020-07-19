@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import './Home.css'
 // import { useSelector } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout} from '../actions/userActions';
+// import { useSelector } from 'react-redux';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link, useHistory
 } from "react-router-dom";
 import { FaShoppingCart, FaEnvelope, FaCogs, FaHome } from 'react-icons/fa'
 import Footer from './Footer';
@@ -15,6 +17,13 @@ function NavBar () {
     const userSignin = useSelector(state=> state.userSignin);
     const {userInfo} = userSignin;
     
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const handleLogout = () => {
+        dispatch(logout());
+        history.push("/");
+      }
+
         return (
             <Route>
                 <div>
@@ -41,6 +50,11 @@ function NavBar () {
                                 <Link to="/signin">Sign In</Link>
                               )}
                               
+                              {userInfo ? (
+                                <Link onClick={handleLogout}>logout</Link>
+                              ) : (
+                                ''
+                              )}
                             <span>
                             </span>
                         </nav>
