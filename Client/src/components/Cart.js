@@ -1,23 +1,34 @@
 
 import { FaStar, FaArrowAltCircleLeft, FaTrashAlt, FaArrowUp, FaChevronCircleLeft } from 'react-icons/fa'
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { addToCart, removeFromCart } from '../actions/addTocart';
+import { onSuccessBuy } from '../actions/payment';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Cart.css'
 import NavBar from './NavBar';
+import Paypal from './Paypal';
+import Axios from 'axios';
 
 function Cart(props) {
 
-  const cart = useSelector(state => state.cart);
-
-  const { cartItems } = cart;
+  const cart = useSelector(state => state.cart );
+   
+  const { cartItems, paymentSucceded } = cart;
 
   const productId = props.match.params.id;
   const qty = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
   const dispatch = useDispatch();
+
+  const [Total, setTotal] = useState(0)
+  const [ShowTotal, setShowTotal] = useState(false)
+  const [ShowSuccess, setShowSuccess] = useState(false)
+
+
   const removeFromCartHandler = (productId) => {
     dispatch(removeFromCart(productId));
+    props.history.push('/cart');
+
   }
   useEffect(() => {
     if (productId) {
@@ -25,12 +36,25 @@ function Cart(props) {
     }
   }, []);
 
-  const checkoutHandler = () => {
-    props.history.push("/signin?redirect=shipping");
+
+const transactionSuccess = (data) => {
+    dispatch(onSuccessBuy(data));
+    props.history.push('/api/products');
   }
 
+const transactionError = () => {
+    console.log('Paypal error')
+}
+
+const transactionCanceled = () => {
+    console.log('Transaction canceled')
+}
+
+
   return   <div> <NavBar/>
+
   <div className="cart">
+
     <div className="cart-list">
       <ul className="cart-list-container">
         <li>
@@ -91,9 +115,13 @@ function Cart(props) {
         :
          $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
       </h3>
-      <button onClick={checkoutHandler} className="button primary full-width" disabled={cartItems.length === 0}>
-        Proceed to Checkout
-      </button>
+      <Paypal
+         
+      toPay={cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+                    onSuccess={transactionSuccess}
+                    transactionError={transactionError}
+                    transactionCanceled={transactionCanceled}  
+      />
 
     </div>
 

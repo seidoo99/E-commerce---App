@@ -9,30 +9,38 @@ import {
 } from "react-router-dom";
 import {addToCart} from '../actions/addTocart';
 import Footer from './Footer'
-import { FaCartPlus, FaDollarSign} from 'react-icons/fa'
 import NavBar from './NavBar'
 
 
 function Products (props) {
-    //hooks
-// const [products, setProduct] = useState([]);
 const selectedProduct = useSelector(state => state.selectedProduct)    
 const {products, loading, error} = selectedProduct;
 const dispatch = useDispatch()
+
+const cart = useSelector(state => state.cart );
+
+const { showSuccessMessage } = cart;
 
 
 useEffect(() => {
       dispatch(productLists());
         return () => {
-            // cleanup
         }
     }, [])
         return (
+
             loading? <div className="loader"></div>
             :
             error ?  <div>{error}</div> :
             <div  >
                 <NavBar />
+{ showSuccessMessage &&
+    <div className="alert alert-success alert-dismissible fade show">
+    <strong>Success!</strong> Your ordere has been successfully placed.
+    <button type="button" className="close" data-dismiss="alert">&times;</button>
+</div>
+}
+   
                 <ul className="card-deck">
 
                     {
