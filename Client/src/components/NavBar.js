@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import {
   FaShoppingCart,
+  FaEnvelope,
   FaUserCheck,
   FaCogs,
   FaHome,
@@ -42,7 +43,7 @@ function NavBar() {
                         </Link>
                             
                             <Link to='/submission'>Submission
-                             <FaEnvelope id='contacticon' color='rgb(225, 203, 78' size={37} />
+                             <FaEnvelope  id='contacticon' color='rgb(225, 203, 78' size={37} />
                             </Link>
 
             <Link to="/api/products">

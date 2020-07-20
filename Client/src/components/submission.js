@@ -10,10 +10,16 @@ function submission() {
              <h1>Submission Form</h1>
              <div id='mainContainer'>
             <form action="post">
-            <label>Product Name</label>
-            <input type='text' id='text1' label="Product Name"/>
+            
+            <label>Product Brand</label>
+            <input type='text'  />
+            <label>Product Type</label>
+            <input type='text'  />
+            <label>Price</label>
+            <input type='number' id='text1' />
             <label>Description</label>
-            <input type='text' id='text2' label="Description"/>
+            <input type='text' />
+            <input type='submit' />
             </form>
             </div>
             </div>
@@ -21,5 +27,7 @@ function submission() {
         </div>
     )
 }
+
+
 
 export default submission
