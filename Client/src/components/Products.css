@@ -35,10 +35,11 @@
 .card {
     margin-top: 10px;
     text-align: center ;
+    
 }
 
 .card-deck {
-    height: 75vh;
+    height: 80vh;
  overflow: scroll;
 }
 

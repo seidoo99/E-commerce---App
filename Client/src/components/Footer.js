@@ -11,9 +11,9 @@ class Footer extends Component {
         return (
   <div id="footer">
 
-  <footer id="sticky-footer" className="py-4 bg-dark">
+  <footer id="sticky-footer" className="py-4">
     <div className="container text-center">
-      <small>Copyright &copy;Yohannes 
+      <small>React project 2020
 
      <a href='https://github.com/yohannesbog/shopoingCart_React' target="_blank">
 

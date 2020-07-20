@@ -10,7 +10,7 @@ const onSuccessBuy = (productId) => (dispatch, getState) => {
      setTimeout(() => {
         dispatch({ type: "REMOVE_SUCCESS_MESSAGE" });
 
-     }, 2000);
+     }, 3000);
 
     
  
