@@ -9,8 +9,8 @@ color: seagreen;}
 
 #sticky-footer {
    flex-shrink: none;
-  background-color: black;
-  color: black;
+  background-color: rgb(7, 7, 7);
+  color: rgb(101, 58, 58);
   /* flex-shrink: initial; */
    width: 100vw;
 }
@@ -21,8 +21,8 @@ small{
 /* Other Classes for Page Styling */
 
 body{
-  background: #007bff;
-  background: linear-gradient(to right, rgb(128, 130, 133), rgb(144, 163, 177));
+  background: #225285;
+  background: linear-gradient(to right, white,white);
   /* background: linear-gradient(to right, #0062E6, #33AEFF); */
 }
 
@@ -37,7 +37,7 @@ body{
 #welcome{
     padding-top: 10%;
     padding-left: 40%;
-    color: #f1f1f1;
+    color: rgb(89, 154, 232);;
     height: 75vh;
 
   }  
