@@ -17,7 +17,10 @@ const addToCart = (productId, qty) => async (dispatch, getState) => {
       });
       const { cart: { cartItems } } = getState();
       Cookie.set("cartItems", JSON.stringify(cartItems));
-  
+      setTimeout(() => {
+        dispatch({ type: "REMOVE_SUCCESS_MESSAGE" });
+
+     }, 3000);
     } catch (error) {
   
     }
@@ -28,6 +31,10 @@ const addToCart = (productId, qty) => async (dispatch, getState) => {
   
     const { cart: { cartItems } } = getState();
     Cookie.set("cartItems", JSON.stringify(cartItems));
+    setTimeout(() => {
+        dispatch({ type: "REMOVE_SUCCESS_MESSAGE" });
+
+     }, 3000);
   }
   export { addToCart, removeFromCart }
 

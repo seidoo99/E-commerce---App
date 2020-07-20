@@ -1,13 +1,10 @@
 import React, { useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import  {productLists} from '../actions/productsAction'
-import axios from 'axios'
 import './Products.css'
-import Home from './Home'
 import {
     Link
 } from "react-router-dom";
-import {addToCart} from '../actions/addTocart';
 import Footer from './Footer'
 import NavBar from './NavBar'
 

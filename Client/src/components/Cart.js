@@ -14,7 +14,7 @@ function Cart(props) {
 
   const cart = useSelector(state => state.cart );
    
-  const { cartItems, paymentSucceded } = cart;
+  const { cartItems, showSuccessMessage , showDeleteMessage} = cart;
 
   const productId = props.match.params.id;
   const qty = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
@@ -52,9 +52,19 @@ const transactionCanceled = () => {
 
 
   return   <div> <NavBar/>
-
+  { showDeleteMessage &&
+    <div className="alert alert-danger alert-dismissible fade show">
+    <strong>Success!</strong> Item successfully removed.
+    <button type="button" className="close" data-dismiss="alert">&times;</button>
+</div>
+}
+{ showSuccessMessage &&
+    <div className="alert alert-success alert-dismissible fade show">
+    <strong>Success!</strong> Item successfully added to Cart.
+    <button type="button" className="close" data-dismiss="alert">&times;</button>
+</div>
+}
   <div className="cart">
-
     <div className="cart-list">
       <ul className="cart-list-container">
         <li>
@@ -111,7 +121,7 @@ const transactionCanceled = () => {
     </div>
     <div className="cart-action">
       <h3>
-        Subtotal ( {cartItems.reduce((a, c) => c.qty + a, 0)} items)
+        Subtotal ( {cartItems.reduce((a, c) => a + c.qty , 0)} items)
         :
          $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
       </h3>

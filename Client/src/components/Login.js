@@ -10,7 +10,7 @@ function Login(props) {
   const userSignin = useSelector(state => state.userSignin);
   const { loading, userInfo, error } = userSignin;
   const dispatch = useDispatch();
-  const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
+  const redirect = props.location.search ? props.location.search.split("=")[1] : '/api/products';
   useEffect(() => {
     if (userInfo) {
       props.history.push(redirect);
