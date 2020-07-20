@@ -1,0 +1,14 @@
+h1 {
+    margin: 30px 0px 30px 0px;
+}
+
+
+#topContainer {
+display: grid;
+justify-content: center;
+}
+
+#mainContainer {
+display: flex;
+justify-content: center;
+}

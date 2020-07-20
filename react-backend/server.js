@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 const userRoute = require('./routes/users');
 const app = express();
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 50011
 
 
 const Schema = new mongoose.Schema({
@@ -39,7 +39,7 @@ app.get("/api/products/:id", async (req, res) => {
 
 
 const uri = process.env.MONGODB_URL;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://tlXx04pN5TdI:tlXx04pN5TdI@cluster0.ulvxj.mongodb.net/ecommerce?retryWrites=true&w=majority', {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
 
 const connection = mongoose.connection;
 connection.once('open', ()=> {
