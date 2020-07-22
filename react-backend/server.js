@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const userRoute = require('./routes/users');
+const config = require('./config');
 const app = express();
 const port = process.env.PORT || 5000
 
@@ -36,9 +37,9 @@ app.get("/api/products/:id", async (req, res) => {
 })
 
 
+const uri = config.MONGODB_URL;
 
-
-const uri = process.env.MONGODB_URL;
+// const uri = process.env.MONGODB_URL;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
 
 const connection = mongoose.connection;
@@ -47,4 +48,4 @@ connection.once('open', ()=> {
     
 }).catch(error => {console.log(error)});
 
-app.listen(port, ()=> {console.log(`server start running on port:  ${port}`)})
+app.listen(config.PORT, ()=> {console.log('server start running on port')})
