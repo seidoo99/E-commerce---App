@@ -13,6 +13,10 @@
         "url": "https://github.com/seidoo99/E-commerce-App/issues"
     },
     "homepage": "https://github.com/seidoo99/E-commerce-App#readme",
+    "engines": {
+        "node": "12.14.1",
+        "npm": "6.14.5"
+    },
     "dependencies": {
         "@babel/cli": "^7.10.4",
         "@babel/core": "^7.10.4",

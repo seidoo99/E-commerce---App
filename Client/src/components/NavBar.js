@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import {
   FaShoppingCart,
+  FaEnvelope,
   FaUserCheck,
   FaCogs,
   FaHome,

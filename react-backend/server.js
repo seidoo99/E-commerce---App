@@ -1,8 +1,9 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const userRoute = require('./routes/users');
+const config = require('./config');
 const app = express();
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 50011
 
 
 const Schema = new mongoose.Schema({
@@ -36,10 +37,16 @@ app.get("/api/products/:id", async (req, res) => {
 })
 
 
+const uri = config.MONGODB_URL;
 
+<<<<<<< HEAD
+// const uri = process.env.MONGODB_URL;
+mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
+=======
 
 const uri = process.env.MONGODB_URL;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://tlXx04pN5TdI:tlXx04pN5TdI@cluster0.ulvxj.mongodb.net/ecommerce?retryWrites=true&w=majority', {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
+>>>>>>> 6174348ad483bdf6b329a4dfc0c6d4e17d5e3f22
 
 const connection = mongoose.connection;
 connection.once('open', ()=> {
@@ -47,4 +54,4 @@ connection.once('open', ()=> {
     
 }).catch(error => {console.log(error)});
 
-app.listen(port, ()=> {console.log(`server start running on port:  ${port}`)})
+app.listen(config.PORT, ()=> {console.log('server start running on port')})
