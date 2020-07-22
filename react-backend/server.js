@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const userRoute = require('./routes/users');
 const config = require('./config');
 const app = express();
-const port = process.env.PORT || 50011
+// const port = process.env.PORT || 50011
 
 
 const Schema = new mongoose.Schema({
