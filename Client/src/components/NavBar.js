@@ -18,7 +18,8 @@ import {
   FaCogs,
   FaHome,
   FaKey,
-  FaSignOutAlt
+  FaSignOutAlt,
+  FaUpload
 } from "react-icons/fa";
 import Footer from "./Footer";
 
@@ -33,31 +34,37 @@ function NavBar() {
     history.push("/");
   };
 
-        return (
-            <Route>
-                <div>
-                    <div id="navlinks">
-                        <nav id="nav" className="navbar">
-                        <Link to='/'>Home
-                        <FaHome id='contacticon' color='rgb(225, 203, 78' size={37} />
-                        </Link>
-                            
-                            <Link to='/submission'>Submission
-                             <FaEnvelope  id='contacticon' color='rgb(225, 203, 78' size={37} />
-                            </Link>
+  return (
+    <Route>
+      <div>
+        <div id="navlinks">
+          <nav id="nav" className="navbar">
+            <Link to="/">
+              <FaHome id="contacticon" color="rgb(225, 203, 78" size={37} />
+              <br />
+              <span>Home</span>
+            </Link>
 
             <Link to="/api/products">
-              Products
               <FaCogs id="contacticon" color="rgb(225, 203, 78" size={37} />
+              <br />
+              <span>Products</span>
+            </Link>
+            <Link to="/product/upload">
+              
+              <FaUpload id="contacticon" color="rgb(225, 203, 78" size={37} />
+              <br />
+              <span>Upload</span>
             </Link>
             {userInfo ? (
               <Link to="/cart/:id?">
-                Cart
                 <FaShoppingCart
                   id="carticon"
                   color="rgb(225, 203, 78"
                   size={37}
                 />
+                <br />
+              <span>Cart</span>
                 <i className="fas fa-shopping-cart"></i>
               </Link>
             ) : (
@@ -65,28 +72,34 @@ function NavBar() {
             )}
             {userInfo ? (
               <Link to="/profile">
-                {userInfo.name}
                 <FaUserCheck
                   id="contacticon"
                   color="rgb(225, 203, 78"
                   size={37}
                 />
+                 <br />
+              <span>{userInfo.name}</span>
+             
+
               </Link>
             ) : (
               <Link to="/signin">
-                Sign In
                 <FaKey id="contacticon" color="yellow" size={37} />
+                <br />
+              <span>Sign-in</span>
               </Link>
             )}
 
             {userInfo ? (
               <Link onClick={handleLogout}>
-                logout
+                
                 <FaSignOutAlt
                   id="contacticon"
                   color="rgb(225, 203, 78"
                   size={37}
                 />
+                  <br />
+              <span>logout</span>
               </Link>
             ) : (
               ""
