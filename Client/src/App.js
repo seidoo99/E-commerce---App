@@ -6,7 +6,7 @@ import Home from './components/Home';
 import Contact from './components/Contact';
  import ProductDetail from './components/ProductDetail';
 
-
+import submission from "./components/submission";
 import Products from './components/Products';
 import {
   BrowserRouter as Router,
@@ -28,6 +28,7 @@ function App() {
     <div className="App">
     <Route path='/' exact component={Home}/>
     {/* <Route path='/contact' exact component={Contact}/> */}
+    <Route path='/submission' exact component={submission}/>
     <Route path='/api/products' exact component={Products}/>
     <Route path='/cart/:id?' exact component={Cart}/>
     <Route path='/checkout' exact component={Checkout}/>

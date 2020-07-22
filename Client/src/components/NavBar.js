@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import {
   FaShoppingCart,
+  FaEnvelope,
   FaUserCheck,
   FaCogs,
   FaHome,
@@ -32,15 +33,18 @@ function NavBar() {
     history.push("/");
   };
 
-  return (
-    <Route>
-      <div>
-        <div id="navlinks">
-          <nav id="nav" className="navbar">
-            <Link to="/">
-              Home
-              <FaHome id="contacticon" color="rgb(225, 203, 78" size={37} />
-            </Link>
+        return (
+            <Route>
+                <div>
+                    <div id="navlinks">
+                        <nav id="nav" className="navbar">
+                        <Link to='/'>Home
+                        <FaHome id='contacticon' color='rgb(225, 203, 78' size={37} />
+                        </Link>
+                            
+                            <Link to='/submission'>Submission
+                             <FaEnvelope  id='contacticon' color='rgb(225, 203, 78' size={37} />
+                            </Link>
 
             <Link to="/api/products">
               Products
