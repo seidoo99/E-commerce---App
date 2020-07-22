@@ -44,7 +44,7 @@
     },
     "scripts": {
         "build": "cd Client && npm run build",
-        "install-client": "cd client && npm run build",
+        "install-client": "cd Client && npm run build",
         "heroku-postbuild": "npm run install-client && npm run build",
         "start": "node server.js",
         "client": "cd Client && npm start"
