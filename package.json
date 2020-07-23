@@ -18,11 +18,7 @@
         "npm": "6.14.5"
     },
     "dependencies": {
-        "@babel/cli": "^7.10.4",
-        "@babel/core": "^7.10.4",
-        "@babel/node": "^7.10.4",
-        "@babel/preset-env": "^7.10.4",
-        "babel-loader": "^8.1.0",
+
         "cookie": "^0.4.1",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
@@ -32,10 +28,6 @@
         "nodemon": "^2.0.4"
     },
     "devDependencies": {
-        "@babel/cli": "^7.8.4",
-        "@babel/core": "^7.8.4",
-        "@babel/node": "^7.8.4",
-        "@babel/preset-env": "^7.8.4",
         "eslint": "^6.8.0",
         "eslint-config-airbnb": "^18.1.0",
         "eslint-plugin-import": "^2.20.1",
@@ -44,10 +36,11 @@
         "nodemon": "^2.0.2"
     },
     "scripts": {
-        "build": "cd Client && npm run build",
-        "install-client": "cd Client && npm run build",
-        "heroku-postbuild": "npm run install-client && npm run build",
+        "client-install": "npm install --prefix Client",
         "start": "node server.js",
-        "client": "cd Client && npm start"
+        "client": "npm start --prefix Client",
+        "server": "nodemon server.js",
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Client && npm run build --prefix Client"
+
     }
 }
